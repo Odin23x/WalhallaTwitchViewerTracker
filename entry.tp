@@ -1,0 +1,91 @@
+{
+  "api": 10,
+  "version": 110,
+  "name": "Walhalla Twitch Viewer Tracker",
+  "id": "odin23x.walhalla_viewer_tracker",
+  "configuration": {
+    "colorDark": "#0e0e10",
+    "colorLight": "#9147ff",
+    "parentCategory": "streaming"
+  },
+  "plugin_start_cmd_windows": "powershell.exe -ExecutionPolicy Bypass -NoProfile -File \"%TP_PLUGIN_FOLDER%WalhallaTwitchViewerTracker\\TwitchViewerTracker.ps1\"",
+  "settings": [
+    {
+      "name": "Twitch Client ID",
+      "type": "text",
+      "default": "",
+      "readOnly": false
+    },
+    {
+      "name": "Twitch OAuth Token",
+      "type": "text",
+      "default": "",
+      "isPassword": true,
+      "readOnly": false
+    },
+    {
+      "name": "Broadcaster User ID",
+      "type": "text",
+      "default": "",
+      "readOnly": false
+    },
+    {
+      "name": "Update Interval Seconds",
+      "type": "number",
+      "default": "30",
+      "minValue": 10,
+      "maxValue": 300,
+      "readOnly": false
+    }
+  ],
+  "categories": [
+    {
+      "id": "odin23x.walhalla_viewer_tracker.cat",
+      "name": "Walhalla | Twitch Viewer Tracker",
+      "actions": [
+        {
+          "id": "odin23x.walhalla_viewer_tracker.act.refresh",
+          "name": "Refresh now",
+          "prefix": "Viewer Tracker",
+          "type": "communicate",
+          "format": "Zuschauerliste jetzt aktualisieren",
+          "tryInline": true,
+          "data": [
+            {
+              "id": "odin23x.walhalla_viewer_tracker.act.refresh.dummy",
+              "type": "text",
+              "label": "unused",
+              "default": ""
+            }
+          ]
+        }
+      ],
+      "states": [
+        {
+          "id": "odin23x.walhalla_viewer_tracker.state.viewer_list",
+          "type": "text",
+          "desc": "Viewer Tracker | Zuschauer Liste",
+          "default": "Warten auf Start..."
+        },
+        {
+          "id": "odin23x.walhalla_viewer_tracker.state.viewer_count",
+          "type": "text",
+          "desc": "Viewer Tracker | Anzahl Zuschauer",
+          "default": "0"
+        },
+        {
+          "id": "odin23x.walhalla_viewer_tracker.state.status",
+          "type": "text",
+          "desc": "Viewer Tracker | Status",
+          "default": "Starting"
+        },
+        {
+          "id": "odin23x.walhalla_viewer_tracker.state.last_update",
+          "type": "text",
+          "desc": "Viewer Tracker | Letztes Update",
+          "default": ""
+        }
+      ]
+    }
+  ]
+}
