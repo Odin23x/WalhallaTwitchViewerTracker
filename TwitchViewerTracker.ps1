@@ -80,7 +80,7 @@ function Run-Check {
         if ($res.data) {
             $names = $res.data.user_name -join "`n"
             $count = [string]$res.total
-            Set-State "$PluginId.state.viewer_list"  ($names ? $names : 'Keine Zuschauer')
+            if ($names) { Set-State "$PluginId.state.viewer_list"  $names } else { Set-State "$PluginId.state.viewer_list"  'Keine Zuschauer' }
             Set-State "$PluginId.state.viewer_count" $count
         } else {
             Set-State "$PluginId.state.viewer_list"  'Keine Zuschauer'
@@ -151,7 +151,7 @@ while ($true) {
         Write-Log "Error: $($_.Exception.Message) – reconnecting"
         try { Set-State "$PluginId.state.status" 'Verbindung unterbrochen...' } catch {}
         Start-Sleep -Seconds 3
-        foreach ($o in @($script:Reader, $script:Writer, $script:TcpClient)) { try { $o?.Dispose() } catch {} }
+        foreach ($o in @($script:Reader, $script:Writer, $script:TcpClient)) { try { if ($o) { $o.Dispose() } } catch {} }
         $script:Reader = $null; $script:Writer = $null; $script:TcpClient = $null
         Connect-TP
     }
