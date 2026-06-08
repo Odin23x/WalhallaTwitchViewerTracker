@@ -1,6 +1,6 @@
 {
   "api": 10,
-  "version": 110,
+  "version": 120,
   "name": "Walhalla Twitch Viewer Tracker",
   "id": "odin23x.walhalla_viewer_tracker",
   "configuration": {
@@ -45,16 +45,64 @@
       "actions": [
         {
           "id": "odin23x.walhalla_viewer_tracker.act.refresh",
-          "name": "Refresh now",
+          "name": "Jetzt aktualisieren",
           "prefix": "Viewer Tracker",
           "type": "communicate",
-          "format": "Zuschauerliste jetzt aktualisieren",
+          "format": "Zuschauerliste sofort aktualisieren",
           "tryInline": true,
           "data": [
             {
-              "id": "odin23x.walhalla_viewer_tracker.act.refresh.dummy",
+              "id": "odin23x.walhalla_viewer_tracker.act.refresh.d",
               "type": "text",
-              "label": "unused",
+              "label": "x",
+              "default": ""
+            }
+          ]
+        },
+        {
+          "id": "odin23x.walhalla_viewer_tracker.act.auto_update_toggle",
+          "name": "Auto-Update toggeln",
+          "prefix": "Viewer Tracker",
+          "type": "communicate",
+          "format": "Auto-Update AN/AUS schalten",
+          "tryInline": true,
+          "data": [
+            {
+              "id": "odin23x.walhalla_viewer_tracker.act.auto_update_toggle.d",
+              "type": "text",
+              "label": "x",
+              "default": ""
+            }
+          ]
+        },
+        {
+          "id": "odin23x.walhalla_viewer_tracker.act.auto_update_on",
+          "name": "Auto-Update AN",
+          "prefix": "Viewer Tracker",
+          "type": "communicate",
+          "format": "Auto-Update einschalten",
+          "tryInline": true,
+          "data": [
+            {
+              "id": "odin23x.walhalla_viewer_tracker.act.auto_update_on.d",
+              "type": "text",
+              "label": "x",
+              "default": ""
+            }
+          ]
+        },
+        {
+          "id": "odin23x.walhalla_viewer_tracker.act.auto_update_off",
+          "name": "Auto-Update AUS",
+          "prefix": "Viewer Tracker",
+          "type": "communicate",
+          "format": "Auto-Update ausschalten",
+          "tryInline": true,
+          "data": [
+            {
+              "id": "odin23x.walhalla_viewer_tracker.act.auto_update_off.d",
+              "type": "text",
+              "label": "x",
               "default": ""
             }
           ]
@@ -65,7 +113,7 @@
           "id": "odin23x.walhalla_viewer_tracker.state.viewer_list",
           "type": "text",
           "desc": "Viewer Tracker | Zuschauer Liste",
-          "default": "Warten auf Start..."
+          "default": ""
         },
         {
           "id": "odin23x.walhalla_viewer_tracker.state.viewer_count",
@@ -74,16 +122,22 @@
           "default": "0"
         },
         {
-          "id": "odin23x.walhalla_viewer_tracker.state.status",
+          "id": "odin23x.walhalla_viewer_tracker.state.auto_update",
           "type": "text",
-          "desc": "Viewer Tracker | Status",
-          "default": "Starting"
+          "desc": "Viewer Tracker | Auto-Update (AN/AUS)",
+          "default": "AN"
         },
         {
           "id": "odin23x.walhalla_viewer_tracker.state.last_update",
           "type": "text",
           "desc": "Viewer Tracker | Letztes Update",
           "default": ""
+        },
+        {
+          "id": "odin23x.walhalla_viewer_tracker.state.status",
+          "type": "text",
+          "desc": "Viewer Tracker | Status",
+          "default": "Starting"
         }
       ]
     }
